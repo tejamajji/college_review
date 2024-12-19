@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: black;
 }
 
 .navbar {
@@ -76,7 +77,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    
 }
 
 .login-box {
@@ -257,3 +258,21 @@ footer {
 .college-card input[type="submit"]:hover {
     background: #0056b3;
 }
+ .forgot-password {
+    text-align: center;
+    margin-top: 10px;
+ }
+
+ .forgot-password a {
+
+    color:blue;
+    text-decoration: none;
+    font-size: 14px;
+
+
+ }
+
+ .forgot-password a:hover {
+
+    text-decoration:underline;
+ }
