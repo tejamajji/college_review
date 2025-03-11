@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to validate login form
+        function validateLoginForm() {
+            // Get form values
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Check if username is empty
+            if (username.trim() === "") {
+                alert("Please enter your username.");
+                return false;
+            }
+
+            // Check if password is empty
+            if (password.length()<6)
+            {
+                alert('chuskovali kadhamma');
+                return false;
+            }
+            if (password.trim() === "") {
+                alert("Please enter your password.");
+                return false;
+            }
+
+            // If validation passes, show a success message and redirect
+            alert("Login successful!");
+            window.location.href = "index.html"; // Redirect to the homepage (index page)
+
+            return false; // Prevent form submission for demonstration purposes
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">College Review</a>
+        <span class="menu-toggle">&#9776;</span>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="college.html">College</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="#" method="POST" onsubmit="return validateLoginForm()">
+                <input type="text" id="loginUsername" name="username" placeholder="Username" required>
+                <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="forgot-password" > <a href="#">Forgot password</a></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.querySelector('form');
+      
+      loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+        
+        // Basic validation
+        if (username.trim() === "" || password.trim() === "") {
+          alert("Please fill in all fields");
+          return;
+        }
+        
+        // Create data object
+        const userData = {
+          username: username,
+          password: password
+        };
+        
+        try {
+          // Send login request to backend
+          const response = await fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+          });
+          
+          const data = await response.json();
+          
+          if (response.ok) {
+            // Store token in localStorage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            
+            alert("Login successful!");
+            window.location.href = "index.html";
+          } else {
+            alert(data.message || "Login failed");
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert("An error occurred. Please try again.");
+        }
+      });
+    });
+  </script>
+</html>
