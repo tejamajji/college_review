@@ -4,9 +4,317 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Review Website</title>
-    
     <link rel="stylesheet" href="styles.css">
-    
+    <style>
+        /* Additional homepage styles */
+        .hero-section {
+            height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1200x700/?university');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        
+        .search-bar input {
+            width: 70%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            width: 30%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+        
+        .features-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 60px 20px;
+            background-color: white;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .top-colleges-section {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .top-colleges-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .colleges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-section {
+            background-color: #4CAF50;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .newsletter-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #555;
+        }
+        
+        .cta-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1200x700/?students');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .primary-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .primary-button:hover {
+            background-color: #45a049;
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-bar input, .search-bar button {
+                width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .search-bar button {
+                border-radius: 5px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input, .newsletter-form button {
+                width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -20,30 +328,156 @@
             <li><a href="register.html">Register</a></li>
         </ul>
     </nav>
-
     
-</body>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const token = localStorage.getItem('token');
-      const user = JSON.parse(localStorage.getItem('user'));
-      const navbar = document.querySelector('.navbar ul');
-      
-      // If user is logged in
-      if (token && user) {
+    <section class="hero-section">
+        <h1>Find Your Perfect College</h1>
+        <p>Discover, compare, and read honest reviews from students like you to make an informed decision about your education.</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search colleges by name, location, or program...">
+            <button>Search</button>
+        </div>
+        <div class="cta-buttons">
+            <a href="college.html" class="cta-button primary-button">Browse Colleges</a>
+            <a href="register.html" class="cta-button secondary-button">Write a Review</a>
+        </div>
+    </section>
+    
+    <section class="features-section">
+        <div class="feature-card">
+            <div class="feature-icon">★</div>
+            <h3>Authentic Reviews</h3>
+            <p>Read thousands of verified student reviews about campus life, academics, facilities, and more.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Compare Colleges</h3>
+            <p>Compare colleges side by side based on ratings, programs, costs, and student feedback.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Detailed Insights</h3>
+            <p>Get comprehensive information on admission requirements, acceptance rates, and graduation outcomes.</p>
+        </div>
+    </section>
+    
+    <section class="top-colleges-section">
+        <h2>Top Rated Colleges</h2>
+        <div class="colleges-grid">
+            <div class="college-card">
+                <img src="https://source.unsplash.com/random/300x200/?university" alt="University Campus">
+                <h3>Harvard University</h3>
+                <p>Cambridge, Massachusetts</p>
+                <p>⭐⭐⭐⭐⭐ 4.9 (1,245 reviews)</p>
+                <input type="submit" value="View Details">
+            </div>
+            <div class="college-card">
+                <img src="https://source.unsplash.com/random/300x200/?college" alt="College Campus">
+                <h3>Stanford University</h3>
+                <p>Stanford, California</p>
+                <p>⭐⭐⭐⭐⭐ 4.8 (987 reviews)</p>
+                <input type="submit" value="View Details">
+            </div>
+            <div class="college-card">
+                <img src="https://source.unsplash.com/random/300x200/?campus" alt="Campus">
+                <h3>MIT</h3>
+                <p>Cambridge, Massachusetts</p>
+                <p>⭐⭐⭐⭐⭐ 4.8 (876 reviews)</p>
+                <input type="submit" value="View Details">
+            </div>
+            <div class="college-card">
+                <img src="https://source.unsplash.com/random/300x200/?education" alt="Education">
+                <h3>UC Berkeley</h3>
+                <p>Berkeley, California</p>
+                <p>⭐⭐⭐⭐ 4.7 (756 reviews)</p>
+                <input type="submit" value="View Details">
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter-section">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter to receive the latest college rankings, admission tips, and scholarship opportunities.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+    
+    <section class="cta-section">
+        <h2>Share Your College Experience</h2>
+        <p>Help future students make informed decisions by sharing your experiences, insights, and advice about your college.</p>
+        <div class="cta-buttons">
+            <a href="register.html" class="cta-button primary-button">Write a Review</a>
+            <a href="login.html" class="cta-button secondary-button">Login to Your Account</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>College Review</h3>
+                <p>Helping students find their perfect educational fit through authentic reviews and comprehensive information.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="college.html">Colleges</a></li>
+                    <li><a href="#">Top Rankings</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 College Review. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbarMenu = document.querySelector('.navbar ul');
+    
+    menuToggle.addEventListener('click', function() {
+        navbarMenu.classList.toggle('active');
+    });
+    
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+    
+    // If user is logged in
+    if (token && user) {
         // Create logout button
         const logoutItem = document.createElement('li');
         const logoutLink = document.createElement('a');
         logoutLink.href = '#';
         logoutLink.textContent = 'Logout';
         logoutLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          // Clear localStorage
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-          // Redirect to login page
-          window.location.href = 'login.html';
+            e.preventDefault();
+            // Clear localStorage
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            // Redirect to login page
+            window.location.href = 'login.html';
         });
         
         logoutItem.appendChild(logoutLink);
@@ -52,10 +486,10 @@
         const loginItem = document.querySelector('a[href="login.html"]').parentNode;
         const registerItem = document.querySelector('a[href="register.html"]').parentNode;
         
-        if (loginItem) navbar.removeChild(loginItem);
-        if (registerItem) navbar.removeChild(registerItem);
+        if (loginItem) navbarMenu.removeChild(loginItem);
+        if (registerItem) navbarMenu.removeChild(registerItem);
         
-        navbar.appendChild(logoutItem);
+        navbarMenu.appendChild(logoutItem);
         
         // Add welcome message
         const welcomeItem = document.createElement('li');
@@ -63,12 +497,27 @@
         welcomeLink.href = '#';
         welcomeLink.textContent = `Welcome, ${user.username}`;
         welcomeItem.appendChild(welcomeLink);
-        navbar.appendChild(welcomeItem);
-      }
+        navbarMenu.appendChild(welcomeItem);
+    }
+    
+    // Add authentication check for Browse Colleges links
+    const browseCollegeLinks = document.querySelectorAll('a[href="college.html"]');
+    browseCollegeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Check if user is logged in
+            if (token && user) {
+                // If logged in, proceed to college page
+                window.location.href = "college.html";
+            } else {
+                // If not logged in, redirect to login page
+                window.location.href = "login.html";
+            }
+        });
     });
-  </script>
+});
+    </script>
+    <!-- Add this line before the closing </body> tag in each HTML file -->
+<script src="auth.js"></script>
+</body>
 </html>
-
-<!-- Login Page -->
-<!-- Save this as login.html -->
-
